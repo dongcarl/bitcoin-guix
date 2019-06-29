@@ -1,0 +1,7 @@
+(channel
+ (version 0)
+ (dependencies
+  (channel
+   (name guix)
+   (url "https://github.com/dongcarl/guix.git")
+   (commit "aedb0cf16e82caea01f82f795e473756067a1165"))))
