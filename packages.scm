@@ -120,3 +120,32 @@ desirable for building Bitcoin Core release binaries."
 
 (define-public xtoolchain-armhf
   (make-bitcoin-cross-toolchain "arm-linux-gnueabihf"))
+
+;;;;;;;;;;;
+(define (make-mingw-cross-toolchain target)
+  "Create a cross-compilation toolchain package for TARGET"
+  (let* ((xbinutils (cross-binutils target))
+         (xlibc (cross-libc target))
+         (xgcc (cross-gcc target
+                          #:xbinutils xbinutils
+                          #:libc xlibc)))
+    ;; Define a meta-package that propagates the resulting XBINUTILS, XLIBC, and
+    ;; XGCC
+    (package
+      (name (string-append target "-toolchain"))
+      (version (package-version xgcc))
+      (source #f)
+      (build-system trivial-build-system)
+      (arguments '(#:builder (begin (mkdir %output) #t)))
+      (propagated-inputs
+       `(("binutils" ,xbinutils)
+         ("libc" ,xlibc)
+         ("gcc" ,xgcc)))
+      (synopsis (string-append "Complete GCC tool chain for " target))
+      (description (string-append "This package provides a complete GCC tool
+chain for " target " development."))
+      (home-page (package-home-page xgcc))
+      (license (package-license xgcc)))))
+
+(define-public xtoolchain-mingw-x86_64
+  (make-mingw-cross-toolchain "x86_64-w64-mingw32"))
