@@ -127,7 +127,6 @@ desirable for building Bitcoin Core release binaries."
   (let* ((xbinutils (cross-binutils target))
          (xlibc (cross-libc target))
          (xgcc (cross-gcc target
-                          #:xgcc gcc-7
                           #:xbinutils xbinutils
                           #:libc xlibc)))
     ;; Define a meta-package that propagates the resulting XBINUTILS, XLIBC, and
