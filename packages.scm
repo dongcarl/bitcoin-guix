@@ -140,7 +140,7 @@ desirable for building Bitcoin Core release binaries."
          (pthreads-xlibc (make-mingw-w64-pthreads "x86_64" xgcc xbinutils xlibc))
          (pthreads-xgcc (make-gcc-with-pthreads
                          (cross-gcc target
-                                    ;; #:xgcc gcc-6
+                                    #:xgcc (make-ssp-fixed-gcc gcc)
                                     #:xbinutils xbinutils
                                     #:libc pthreads-xlibc))))
     ;; Define a meta-package that propagates the resulting XBINUTILS, XLIBC, and
