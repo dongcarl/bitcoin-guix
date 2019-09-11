@@ -4,4 +4,4 @@
   (channel
    (name guix)
    (url "https://github.com/dongcarl/guix.git")
-   (commit "6b66a2924ff34e733bd9124719fc824b23d4bf29"))))
+   (commit "32d6bc417339900f05d918654a1ad0339ed5c453"))))
