@@ -132,7 +132,7 @@ desirable for building Bitcoin Core release binaries."
 (define (make-mingw-pthreads-cross-toolchain target)
   "Create a cross-compilation toolchain package for TARGET"
   (let* ((xbinutils (cross-binutils target))
-         (pthreads-xlibc mingw-w64-x86_64-posix)
+         (pthreads-xlibc mingw-w64-x86_64-winpthreads)
          (pthreads-xgcc (make-gcc-with-pthreads
                          (cross-gcc target
                                     #:xgcc (make-ssp-fixed-gcc gcc)
