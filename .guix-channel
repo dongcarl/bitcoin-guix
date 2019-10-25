@@ -4,4 +4,4 @@
   (channel
    (name guix)
    (url "https://github.com/dongcarl/guix.git")
-   (commit "4c01f35b86bd40d098a31e0bf19ae09285c502f9"))))
+   (branch "2019-10-bitcoin-staging-GREAT-CORE-UPDATES-MERGE"))))
