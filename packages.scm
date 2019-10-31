@@ -159,3 +159,8 @@ chain for " target " development."))
 
 (define-public xtoolchain-mingw-x86_64
   (make-mingw-pthreads-cross-toolchain "x86_64-w64-mingw32"))
+
+;;;;;;;;;;;
+
+(define-public libstdc++-7
+  (make-libstdc++ gcc-7))
