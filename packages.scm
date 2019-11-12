@@ -5,10 +5,12 @@
   #:use-module (gnu packages gcc)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages mingw)
-  #:use-module (guix build-system trivial)
+  #:use-module (guix build-system font)
   #:use-module (guix build-system gnu)
+  #:use-module (guix build-system trivial)
   #:use-module (guix download)
   #:use-module (guix gexp)
+  #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
   #:use-module (guix utils))
 
@@ -162,5 +164,21 @@ chain for " target " development."))
 
 ;;;;;;;;;;;
 
-(define-public libstdc++-7
-  (make-libstdc++ gcc-7))
+(define-public font-tuffy
+  (package
+   (name "font-tuffy")
+   (version "20120614")
+   (source
+    (origin
+     (method url-fetch)
+     (uri (string-append "http://tulrich.com/fonts/tuffy-" version ".tar.gz"))
+     (file-name (string-append name "-" version ".tar.gz"))
+     (sha256
+      (base32
+       "02vf72bgrp30vrbfhxjw82s115z27dwfgnmmzfb0n9wfhxxfpyf6"))))
+   (build-system font-build-system)
+   (home-page "http://tulrich.com/fonts/")
+   (synopsis "The Tuffy Truetype Font Family")
+   (description
+    "Thatcher Ulrich's first outline font design. He started with the goal of producing a neutral, readable sans-serif text font. There are lots of \"expressive\" fonts out there, but he wanted to start with something very plain and clean, something he might want to actually use. ")
+   (license license:public-domain)))
